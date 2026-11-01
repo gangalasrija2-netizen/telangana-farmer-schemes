@@ -1,0 +1,121 @@
+/* Telangana Farmer Schemes - monsoon blue, paddy green, turmeric */
+:root { --ink:#10222b; --blue:#0f3d5e; --leaf:#2a5f35; --paddy:#3f8247; --gold:#e8a317;
+        --mist:#eef4f6; --line:#cfdde3; --muted:#4f6670; --err:#b3261e; }
+* { box-sizing:border-box; }
+body { margin:0; background:var(--mist); color:var(--ink);
+       font:17px/1.55 system-ui,"Segoe UI","Noto Sans","Noto Sans Telugu","Nirmala UI",Gautami,Arial,sans-serif; }
+h1,h2,.mark,.hi { font-family:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif; }
+a { color:var(--blue); }
+:focus-visible { outline:3px solid var(--gold); outline-offset:2px; }
+[hidden] { display:none !important; }
+
+/* top bar */
+.bar { background:var(--blue); color:#fff; padding:13px 18px; display:flex;
+       justify-content:space-between; align-items:center; gap:12px; }
+.bar b { font-family:Georgia,serif; font-size:1.05rem; }
+.bar span { display:flex; align-items:center; gap:14px; }
+.bar a { color:#fff; font-size:.92rem; }
+.bar button { color:#fff; background:none; border:1px solid #ffffff90; border-radius:6px;
+              padding:6px 12px; font:inherit; font-size:.9rem; cursor:pointer; }
+
+main { max-width:720px; margin:0 auto; padding:22px 18px 48px; }
+h1 { font-size:1.7rem; line-height:1.2; margin:0 0 8px; }
+h2 { font-size:1.05rem; margin:22px 0 4px; }
+.lead { color:var(--muted); margin:0 0 20px; }
+
+/* forms */
+form { display:grid; gap:14px; }
+label { font-weight:600; display:grid; gap:5px; }
+input,select,textarea { font:inherit; padding:12px; border:1.5px solid #8fa5af; border-radius:8px; background:#fff; width:100%; }
+button.main,.apply { background:var(--gold); color:#1d1500; font:inherit; font-weight:700; border:0;
+       border-radius:8px; padding:13px 18px; cursor:pointer; text-align:center; text-decoration:none; display:block; }
+.msg { min-height:1.4em; margin:0; font-weight:600; }
+.msg.err { color:var(--err); } .msg.ok { color:var(--leaf); }
+.alt { margin-top:18px; }
+
+/* login + register: crop rows seen from above */
+.auth { min-height:100vh; display:grid; grid-template-columns:1fr; }
+.field { color:#fff; padding:30px 24px 34px; display:flex; flex-direction:column; justify-content:flex-end; gap:8px;
+  background:linear-gradient(rgba(8,30,22,.35),rgba(8,30,22,.78)),
+    repeating-linear-gradient(100deg,#2f6b3a 0 16px,#4a9150 16px 32px,#27572f 32px 48px); }
+.field .mark { font-size:1rem; font-weight:700; margin-bottom:auto; }
+.field h2 { font-size:1.7rem; line-height:1.15; margin:0; max-width:15em; }
+.field p { margin:0; max-width:30em; color:#e3efe5; }
+main.panel { max-width:none; width:100%; margin:0; padding:28px 22px 40px; background:var(--mist); align-self:center; }
+main.panel > * { max-width:420px; }
+@media (min-width:820px) {
+  .auth { grid-template-columns:1.15fr 1fr; }
+  .field { padding:48px; }
+  .field h2 { font-size:2.5rem; }
+  main.panel { padding:48px; }
+}
+
+/* dashboard hero: land scale */
+.hero { background:var(--blue); color:#fff; }
+.hero .wrap { max-width:720px; margin:0 auto; padding:22px 18px 18px; }
+.hi { font-size:1.5rem; margin:0; }
+.sum { margin:2px 0 16px; color:#cfe3ee; }
+.scale { list-style:none; display:flex; gap:4px; margin:0; padding:0; }
+.scale li { flex:1; padding:8px 4px; text-align:center; border-radius:6px; background:#ffffff1c; line-height:1.2; }
+.scale b { display:block; font-size:.78rem; } .scale span { font-size:.68rem; color:#bcd3df; }
+.scale li.on { background:var(--gold); color:#1d1500; } .scale li.on span { color:#3b2c00; }
+.rows { height:14px; background:repeating-linear-gradient(100deg,#2f6b3a 0 16px,#4a9150 16px 32px,#27572f 32px 48px); }
+
+/* categories */
+.linkbtn { display:block; border:2px solid var(--blue); border-radius:8px; padding:11px; text-align:center;
+           font-weight:700; text-decoration:none; margin:0 0 18px; background:#fff; }
+.tabs { display:flex; background:#fff; border:1px solid var(--line); border-radius:10px; padding:4px; margin-bottom:14px; }
+.tab { flex:1; background:none; border:0; border-radius:7px; padding:11px 6px; font:inherit; font-weight:600; color:var(--muted); cursor:pointer; }
+.tab[aria-selected="true"] { background:var(--leaf); color:#fff; }
+.chips { display:flex; gap:8px; overflow-x:auto; padding-bottom:10px; margin-bottom:6px; }
+.chips a { white-space:nowrap; font-size:.88rem; padding:6px 12px; border:1px solid var(--line); border-radius:99px;
+           background:#fff; color:var(--blue); text-decoration:none; }
+.cat { margin-bottom:12px; scroll-margin-top:10px; }
+.cat summary { cursor:pointer; font-weight:700; font-family:Georgia,serif; font-size:1.12rem; color:var(--blue);
+               padding:10px 0; border-bottom:2px solid var(--line); margin-bottom:10px; display:flex; justify-content:space-between; }
+.cat summary small { background:var(--blue); color:#fff; border-radius:99px; padding:0 10px; font:600 .8rem/1.7 system-ui; }
+
+.scheme { display:block; background:#fff; border:1px solid var(--line); border-left:5px solid var(--paddy);
+          border-radius:6px; padding:12px 14px; margin-bottom:10px; text-decoration:none; color:inherit; }
+.scheme.off { border-left-color:#aab8be; color:var(--muted); }
+.scheme .name { display:block; font-weight:700; font-size:1.06rem; color:var(--blue); }
+.scheme.off .name { color:var(--muted); }
+.benefit { display:block; margin-top:2px; } .why { display:block; margin-top:4px; font-size:.88rem; }
+.tag { font-weight:600; font-size:.76rem; color:var(--leaf); border:1px solid var(--leaf); border-radius:99px;
+       padding:1px 9px; margin-left:8px; vertical-align:middle; }
+
+/* scheme + complaint pages */
+.status { padding:10px 14px; border-radius:6px; font-weight:600; }
+.status.yes { background:#e0f0e3; color:var(--leaf); } .status.no { background:#f6e9e7; color:var(--err); }
+.docs { padding-left:22px; margin:6px 0 22px; } .docs li { margin-bottom:4px; }
+.fine,.empty { color:var(--muted); font-size:.92rem; }
+.back { display:inline-block; margin-bottom:14px; }
+.complaint { background:#fff; border:1px solid var(--line); border-left:5px solid var(--gold); border-radius:6px; padding:12px 14px; margin-bottom:10px; }
+.complaint p { margin:6px 0 0; }
+.apply + .apply { margin-top:10px; }
+.apply.form { background:#fff; color:var(--blue); border:2px solid var(--blue); }
+.langbtn { color:#fff; background:none; border:1px solid #ffffff90; border-radius:6px; padding:6px 12px; font:inherit; font-size:.9rem; cursor:pointer; }
+.langbtn.float { position:absolute; top:14px; right:16px; color:var(--blue); border-color:var(--blue); background:#fff; }
+main.panel > .langbtn { max-width:none; }
+form > a { font-size:.95rem; }
+
+/* illustrated look */
+.auth { background:url(../images/field.svg) center bottom/cover no-repeat #bfe3f2; display:flex; flex-direction:column; justify-content:space-between; }
+.auth .field { background:none; color:var(--blue); padding:26px 22px 8px; justify-content:flex-start; }
+.auth .field .mark { color:var(--blue); margin-bottom:12px; }
+.auth .field h2 { color:var(--ink); }
+.auth .field p { color:#2c4653; }
+main.panel { background:rgba(255,255,255,.96); border-radius:18px; box-shadow:0 18px 44px rgba(10,40,60,.28);
+             width:auto; margin:8px 16px 28px; padding:26px 22px 30px; align-self:center; max-width:460px; }
+.panel h1::before { content:"\1F33E  "; }
+@media (min-width:820px) {
+  .auth { display:grid; grid-template-columns:1.1fr 1fr; align-items:center; }
+  .auth .field { padding:48px; align-self:start; }
+  main.panel { margin:32px 6vw 32px 0; justify-self:end; width:100%; }
+}
+.hero { background:linear-gradient(100deg,rgba(12,52,80,.92) 0%,rgba(12,52,80,.7) 50%,rgba(12,52,80,.05) 100%),
+        url(../images/banner.svg) right center/cover; min-height:220px; display:flex; align-items:center; }
+.hero .wrap { width:100%; padding:26px 18px; }
+.rows { display:none; }
+.ico { display:inline-grid; place-items:center; width:34px; height:34px; border-radius:50%; background:#e3f1e8; margin-right:10px; font-size:1.1rem; }
+.cat summary > span { display:flex; align-items:center; }
