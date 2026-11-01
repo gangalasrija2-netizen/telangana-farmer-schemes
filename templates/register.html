@@ -1,0 +1,9 @@
+{% extends "base.html" %}{% block title %}Register | Telangana Farmer Schemes{% endblock %}
+{% block content %}<section class="auth"><aside class="field"><h1 style="color:white">Create your farmer account</h1><p>Enter your details to see schemes that may match your land area.</p><img src="{{ url_for('static',filename='images/field.svg') }}" alt="Farmer illustration"></aside>
+<div class="panel"><h1>Registration</h1><form method="post"><input type="hidden" name="_csrf_token" value="{{ csrf_token }}">
+<label>Full name<input name="name" maxlength="80" required></label>
+<label>Mobile number<input name="mobile" type="tel" inputmode="numeric" maxlength="10" pattern="[6-9][0-9]{9}" required></label>
+<label>Land area (acres)<input name="land_area" type="number" min="0" max="100000" step="0.01" value="0" required><small class="muted">Enter 0 if you do not own agricultural land.</small></label>
+<label>Password<input name="password" type="password" minlength="8" required></label>
+<label>Confirm password<input name="confirm_password" type="password" minlength="8" required></label>
+<button class="main" type="submit">Create account</button></form><p class="muted">Already registered? <a href="{{ url_for('login') }}">Log in</a></p></div></section>{% endblock %}

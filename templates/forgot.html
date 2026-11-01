@@ -1,0 +1,6 @@
+{% extends "base.html" %}{% block title %}Reset password{% endblock %}{% block content %}
+<section class="auth"><aside class="field"><h1 style="color:white">Reset password</h1><p>This demo checks your registered mobile number and name. A real public service must use verified OTP.</p></aside>
+<div class="panel"><h1>Reset password</h1><form method="post"><input type="hidden" name="_csrf_token" value="{{ csrf_token }}">
+<label>Mobile number<input name="mobile" maxlength="10" required></label><label>Registered name<input name="name" required></label>
+<label>New password<input name="password" type="password" minlength="8" required></label><label>Confirm new password<input name="confirm_password" type="password" minlength="8" required></label>
+<button class="main" type="submit">Update password</button></form><p><a href="{{ url_for('login') }}">Back to login</a></p></div></section>{% endblock %}
