@@ -1,0 +1,8 @@
+{% extends "base.html" %}{% block title %}Complaints{% endblock %}{% block content %}
+<main><h1>Raise a complaint</h1><p class="lead">Record an issue about a scheme application. This saves the complaint in this website's database; it does not send it to a government office.</p>
+<section class="card"><form method="post"><input type="hidden" name="_csrf_token" value="{{ csrf_token }}">
+<label>Scheme<select name="scheme_id" required><option value="">Choose a scheme</option>{% for s in schemes %}<option value="{{ s.id }}">{{ s.name }}</option>{% endfor %}</select></label>
+<label>Problem type<select name="problem_type" required><option value="">Choose a problem</option><option>Subsidy amount not received</option><option>Less amount received</option><option>Application pending</option><option>Application rejected</option><option>Unable to apply</option><option>Other</option></select></label>
+<label>Date you applied<input name="applied_on" type="date" required></label><label>Application / reference number (optional)<input name="application_number" maxlength="100"></label>
+<label>Describe the problem<textarea name="details" rows="5" minlength="10" required></textarea></label><button type="submit">Submit complaint</button></form></section>
+<h2>My complaints</h2>{% if complaints %}<div class="cards">{% for c in complaints %}<article class="card"><span class="tag">{{ c.status }}</span><h3>{{ c.reference }}</h3><p><b>{{ c.scheme.name }}</b></p><p>{{ c.problem_type }}</p><p class="muted">Applied on: {{ c.applied_on.strftime('%d-%m-%Y') }} · Submitted: {{ c.created_at.strftime('%d-%m-%Y') }}</p><p>{{ c.details }}</p></article>{% endfor %}</div>{% else %}<div class="empty">You have not submitted any complaints yet.</div>{% endif %}</main>{% endblock %}

@@ -1,0 +1,11 @@
+{% extends "base.html" %}{% block title %}{{ scheme.name }}{% endblock %}{% block content %}
+<main><p><a href="{{ url_for('dashboard') }}">← Back to schemes</a></p><article class="detail">
+<span class="tag">{{ scheme.level }}</span><span class="tag">{{ scheme.category }}</span>
+<h1>{{ scheme.name }}</h1><p class="lead">{{ scheme.benefit }}</p><h2>About this scheme</h2><p>{{ scheme.about or scheme.benefit }}</p>
+<h2>Preliminary land-area check</h2><p>Your land: <b>{{ "%.2f"|format(farmer.land_area) }} acres</b>. Listed range: {{ scheme.min_land }}–{{ scheme.max_land }} acres.</p>
+{% if is_eligible %}<span class="tag">Matches land-area filter</span>{% else %}<span class="tag" style="background:#fff0ed;color:#9a3a26">Outside listed land range</span>{% endif %}
+<p class="fine">This does not confirm final eligibility. Verify all scheme conditions with the relevant department.</p>
+{% if scheme.note %}<h2>Important note</h2><p>{{ scheme.note }}</p>{% endif %}
+<h2>Documents commonly requested</h2><ul class="doc-list">{% for d in scheme.documents %}<li>{{ d }}</li>{% endfor %}</ul>
+<div class="actions">{% if scheme.apply_link %}<a class="btn" href="{{ scheme.apply_link }}" target="_blank" rel="noopener noreferrer">Official information / apply link ↗</a>{% endif %}{% if scheme.form_link %}<a class="btn secondary" href="{{ scheme.form_link }}" target="_blank" rel="noopener noreferrer">{{ scheme.form_label or 'Application form' }} ↗</a>{% endif %}<a class="btn secondary" href="{{ url_for('complaints') }}">Raise a complaint</a></div>
+</article></main>{% endblock %}

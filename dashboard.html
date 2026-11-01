@@ -1,0 +1,8 @@
+{% extends "base.html" %}{% block title %}Dashboard{% endblock %}{% block content %}
+<main><section class="card" style="background:linear-gradient(120deg,#e8f5e9,#f7fbf6)">
+<h1>Namaste, {{ farmer.name }}! 👋</h1><p class="lead">Your registered land area: <b>{{ "%.2f"|format(farmer.land_area) }} acres</b></p>
+<div class="cards"><div><h2>{{ eligible_count }}</h2><span class="muted">Preliminary matches</span></div><div><h2>{{ total_count }}</h2><span class="muted">Total scheme records</span></div></div>
+<p class="fine">A land-area match is only an initial filter, not confirmation of government eligibility.</p></section>
+<div class="tabs"><a class="{{ 'active' if view == 'eligible' else '' }}" href="{{ url_for('dashboard',view='eligible') }}">Eligible for you ({{ eligible_count }})</a><a class="{{ 'active' if view == 'all' else '' }}" href="{{ url_for('dashboard',view='all') }}">All schemes ({{ total_count }})</a></div>
+{% if categories %}{% for category,items in categories.items() %}<section class="scheme-list"><h2>{{ category }}</h2><div class="cards">{% for s in items %}<article class="scheme-card"><span class="tag">{{ s.level }}</span><span class="tag">{{ s.mode|title }} application</span><h3>{{ s.name }}</h3><p>{{ s.benefit }}</p><a href="{{ url_for('scheme_detail',scheme_id=s.id) }}">View details →</a></article>{% endfor %}</div></section>{% endfor %}
+{% else %}<div class="empty">No schemes match your registered land area. Select “All schemes” to browse every scheme.</div>{% endif %}</main>{% endblock %}
